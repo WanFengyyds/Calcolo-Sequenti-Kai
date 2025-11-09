@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sequent Solver - Web Version</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sequent Solver</h1>
+            <p class="subtitle">Applicazione web per la derivazione dei sequenti</p>
+        </header>
+
+        <div class="input-section">
+            <div class="input-group">
+                <label for="sequent-input">Inserisci sequente o proposizione:</label>
+                <input type="text" id="sequent-input" placeholder="es: A & B |- C V D" autocomplete="off">
+                <div class="error-message" id="error-message"></div>
+            </div>
+            
+            <div class="help-section">
+                <button class="help-toggle" id="help-toggle">📖 Guida ai simboli</button>
+                <div class="help-content" id="help-content">
+                    <h3>Simboli accettati:</h3>
+                    <ul>
+                        <li><strong>Atomi:</strong> Lettere maiuscole A-Z (esclusa V)</li>
+                        <li><strong>Vero:</strong> <code>1</code>, <code>tt</code></li>
+                        <li><strong>Falso:</strong> <code>0</code>, <code>⊥</code></li>
+                        <li><strong>Not:</strong> <code>¬</code>, <code>!</code>, <code>~</code></li>
+                        <li><strong>And:</strong> <code>&</code>, <code>∧</code></li>
+                        <li><strong>Or:</strong> <code>V</code>, <code>∨</code></li>
+                        <li><strong>Implica:</strong> <code>-></code>, <code>→</code></li>
+                        <li><strong>Sequente:</strong> <code>|-</code>, <code>⊢</code></li>
+                    </ul>
+                    <p><strong>Esempi:</strong></p>
+                    <ul>
+                        <li><code>A & B |- C</code></li>
+                        <li><code>A -> B, B -> C |- A -> C</code></li>
+                        <li><code>¬(A & ¬A)</code></li>
+                        <li><code>|- A V ¬A</code> (tautologia)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="derivation-container" id="derivation-container">
+            <div class="zoom-controls">
+                <button id="zoom-in">+</button>
+                <button id="zoom-reset">Reset</button>
+                <button id="zoom-out">-</button>
+            </div>
+            <div class="derivation-viewport" id="derivation-viewport">
+                <canvas id="derivation-canvas"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="proposizione.js"></script>
+    <script src="parser.js"></script>
+    <script src="sequente.js"></script>
+    <script src="regole.js"></script>
+    <script src="derivazione.js"></script>
+    <script src="renderer.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

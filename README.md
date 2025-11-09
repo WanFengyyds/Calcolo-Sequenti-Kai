@@ -63,13 +63,10 @@ Works in all modern browsers:
 - Firefox 88+
 - Safari 14+
 
-## License
-
-Same as the original Android project.
-
 ## Author
 
 Author: [WanFengyyds](https://github.com/WanFengyyds)
 
 Signature: — WanFengyyds
 #
+

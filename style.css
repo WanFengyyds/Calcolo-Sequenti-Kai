@@ -215,6 +215,86 @@ header h1 {
     }
 }
 
+/* Additional responsive rules for small devices */
+@media (max-width: 600px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    header h1 {
+        font-size: 1.6em;
+    }
+
+    .subtitle {
+        font-size: 0.95em;
+    }
+
+    .derivation-viewport {
+        padding: 12px;
+        min-height: 300px;
+        max-height: 70vh;
+    }
+
+    /* Make canvas scale to viewport width */
+    #derivation-canvas {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100%;
+    }
+
+    /* Make zoom controls touch-friendly and sticky */
+    .zoom-controls {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        gap: 8px;
+        padding: 10px;
+        background: #f8f9fa;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .zoom-controls button {
+        flex: 1 1 auto;
+        padding: 12px 10px;
+        font-size: 1.05em;
+    }
+
+    /* Help toggle full width */
+    .help-toggle {
+        width: 100%;
+        padding: 12px;
+        font-size: 1.05em;
+    }
+
+    .help-content.show {
+        padding: 12px;
+    }
+}
+
+/* Very small screens (older phones) */
+@media (max-width: 420px) {
+    body {
+        padding: 8px;
+    }
+
+    header h1 {
+        font-size: 1.4em;
+    }
+
+    .input-section {
+        padding: 12px;
+    }
+
+    .help-content li {
+        font-size: 0.95em;
+    }
+
+    .site-footer {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+}
+
 /* Footer / author signature styling */
 .site-footer {
     margin: 20px auto 0;

@@ -1,6 +1,7 @@
 # Sequent Solver - Web Version
 
 This is a web-based port of the Sequent Solver application. It provides sequent calculus derivation visualization directly in your browser.
+[WebSite](https://calcolo-squenti-kai.netlify.app/)
 
 ## Features
 
@@ -55,18 +56,9 @@ A & (B V C) |- (A & B) V (A & C)
 - `renderer.js` - Canvas rendering for visualization
 - `app.js` - Main application logic
 
-## Browser Compatibility
-
-Works in all modern browsers:
-
-- Chrome/Edge 90+
-- Firefox 88+
-- Safari 14+
-
-## Author
-
 Author: [WanFengyyds](https://github.com/WanFengyyds)
 
 Signature: — WanFengyyds
 #
+
 

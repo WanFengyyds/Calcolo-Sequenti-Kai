@@ -6,7 +6,7 @@ class DerivationRenderer {
         this.ctx = canvas.getContext('2d');
         this.zoom = 1;
         this.padding = 20;
-        this.lineHeight = 60;
+        this.lineHeight = 40;
         this.horizontalGap = 40;
     }
 
@@ -71,12 +71,12 @@ class DerivationRenderer {
 
         // Draw sequente at the bottom of this node
         ctx.fillStyle = '#333';
+        const sequenteTextWidth = this.measureText(derivazione.sequenteText, fontSize).width * this.zoom;
         ctx.fillText(derivazione.sequenteText, x + width / 2, nodeY);
 
         // Draw horizontal line above the sequente
         const lineY = nodeY - scaledFontSize * 0.7;
-        const lineWidth = Math.min(width * 0.8, 
-            this.measureText(derivazione.sequenteText, fontSize).width * this.zoom + 20);
+        const lineWidth = Math.min(width * 0.8, sequenteTextWidth + 20);
         ctx.strokeStyle = '#666';
         ctx.lineWidth = 2 * this.zoom;
         ctx.beginPath();
@@ -84,10 +84,22 @@ class DerivationRenderer {
         ctx.lineTo(x + (width + lineWidth) / 2, lineY);
         ctx.stroke();
 
-        // Draw regola (rule name) above the line
+        // Draw regola (rule name): ax.id on top, others on the right
         ctx.font = `${scaledFontSize * 0.8}px monospace`;
         ctx.fillStyle = '#667eea';
-        ctx.fillText(derivazione.regolaText, x + width / 2, lineY - scaledFontSize * 0.5);
+        
+        if (derivazione.regolaText === 'ax-id') {
+            // Draw ax-id centered above the line
+            ctx.textAlign = 'center';
+            ctx.fillText(derivazione.regolaText, x + width / 2, lineY - scaledFontSize * 0.5);
+        } else {
+            // Draw other rules to the right of the sequente
+            ctx.textAlign = 'left';
+            const regolaX = x + width / 2 + sequenteTextWidth / 2 + 15 * this.zoom;
+            ctx.fillText(derivazione.regolaText, regolaX, nodeY);
+        }
+        
+        ctx.textAlign = 'center'; // Reset text align for next nodes
 
         // Draw children above (if any)
         if (derivazione.albero instanceof Ramo) {

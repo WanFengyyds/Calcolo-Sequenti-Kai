@@ -57,8 +57,4 @@ A & (B V C) |- (A & B) V (A & C)
 - `app.js` - Main application logic
 
 Author: [WanFengyyds](https://github.com/WanFengyyds)
-
-Signature: — WanFengyyds
-#
-
-
+Inspired by:[SkiFire13](https://github.com/SkiFire13)
